@@ -1,0 +1,33 @@
+# Robots.txt for Samarth Wood Carving
+# Allow search engines to crawl the site
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private
+Disallow: /*.json$
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Allow: /api/sitemap
+Crawl-delay: 0
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://samarthwoodcarving.com/sitemap.xml
+Sitemap: https://samarthwoodcarving.com/sitemap-0.xml

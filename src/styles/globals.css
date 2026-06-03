@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root variables for luxury aesthetic */
+:root {
+  --color-teak: #8b6f3f;
+  --color-walnut: #6d5530;
+  --color-gold: #d4af37;
+  --color-ivory: #fffbf2;
+  --color-dark: #2f241a;
+  
+  /* Animations */
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: var(--color-ivory);
+  color: var(--color-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.serif-display {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.serif-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+}
+
+/* Luxury buttons */
+.btn-luxury {
+  @apply px-8 py-4 text-base font-medium tracking-wide rounded-sm;
+  @apply transition-all duration-500 ease-out;
+  @apply border-2 border-gold-500;
+  @apply text-gold-500 hover:text-ivory-50;
+  @apply hover:bg-gold-500 hover:shadow-gold-glow;
+  @apply relative overflow-hidden;
+}
+
+.btn-luxury::before {
+  content: '';
+  @apply absolute inset-0 bg-gold-500 -z-10 scale-0 rounded-sm;
+  @apply transition-transform duration-500 ease-out;
+  @apply origin-center;
+}
+
+.btn-luxury:hover::before {
+  @apply scale-100;
+}
+
+/* Gradient text for luxury */
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--color-gold) 0%, #b8960e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth scrolling for Lenis */
+html.lenis {
+  height: auto;
+}
+
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Luxury card styles */
+.luxury-card {
+  @apply p-8 rounded-lg;
+  @apply bg-ivory-50/50 backdrop-blur-sm border border-ivory-200;
+  @apply hover:shadow-luxury-lg transition-all duration-500;
+  @apply hover:border-gold-300;
+}
+
+/* Section divider */
+.section-divider {
+  @apply h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent;
+}
+
+/* Scroll reveal animations */
+@keyframes revealFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes revealFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes revealFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.reveal-left {
+  animation: revealFromLeft 1s var(--transition-smooth) forwards;
+}
+
+.reveal-right {
+  animation: revealFromRight 1s var(--transition-smooth) forwards;
+}
+
+.reveal-top {
+  animation: revealFromTop 1s var(--transition-smooth) forwards;
+}
+
+.reveal-bottom {
+  animation: revealFromBottom 1s var(--transition-smooth) forwards;
+}
+
+.scale-reveal {
+  animation: scaleReveal 1s var(--transition-smooth) forwards;
+}
+
+/* Parallax text effect */
+.parallax-text {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-text span {
+  display: inline-block;
+  animation: slideUp 1s var(--transition-smooth) forwards;
+}
+
+/* Floating dust particles */
+.floating-dust {
+  position: fixed;
+  pointer-events: none;
+  width: 4px;
+  height: 4px;
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 50%;
+  animation: floatingDust 20s infinite linear;
+}
+
+/* Warm lighting effect */
+.warm-light-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(212, 175, 55, 0.15) 0%,
+    rgba(139, 111, 63, 0.08) 50%,
+    transparent 100%
+  );
+  animation: glowPulse 4s ease-in-out infinite;
+  z-index: 10;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  @apply absolute bottom-8 left-1/2 -translate-x-1/2;
+  @apply flex flex-col items-center gap-2;
+  @apply text-gold-600 opacity-70;
+}
+
+.scroll-indicator svg {
+  @apply w-6 h-6 animate-scroll-indicator;
+}
+
+/* Glass morphism effect */
+.glass-effect {
+  @apply backdrop-blur-md bg-white/10 border border-white/20;
+}
+
+/* Luxury borders */
+.border-luxury {
+  @apply border-gold-400;
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-dark);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ivory);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8960e;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+a:focus-visible {
+  @apply outline-2 outline-offset-2 outline-gold-500;
+}
+
+/* Smooth transitions for all interactive elements */
+button,
+a,
+input,
+textarea,
+select {
+  transition: all 0.3s var(--transition-smooth);
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .serif-display {
+    font-size: 2.5rem;
+  }
+  
+  .serif-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  body {
+    font-size: 15px;
+  }
+}
